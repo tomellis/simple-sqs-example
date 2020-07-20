@@ -10,7 +10,7 @@ queue = sqs.get_queue_by_name(QueueName='test.fifo')
 num_msg = 10
 
 # Process messages by printing out body
-for message in queue.receive_messages(MaxNumberOfMessages=10):
+for message in queue.receive_messages(MaxNumberOfMessages=num_msg):
     # Print out the body of the message
     print(message.body)
 

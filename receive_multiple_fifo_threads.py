@@ -13,12 +13,12 @@ queue = sqs.get_queue_by_name(QueueName='test.fifo')
 num_msg = 10
 
 def get_messages_fast(name):
-  for message in queue.receive_messages(MaxNumberOfMessages=10):
+  for message in queue.receive_messages(MaxNumberOfMessages=num_msg):
     logging.info("Thread %s - %s", name, message.body) # Print out the body of the message with thread id
     message.delete () # Let the queue know that the message is processed
 
 def get_messages_slow(name):
-  for message in queue.receive_messages(MaxNumberOfMessages=5):
+  for message in queue.receive_messages(MaxNumberOfMessages=num_msg):
     logging.info("Thread %s - %s", name, message.body) # Print out the body of the message with thread id
     time.sleep(1) # Sleep for a few to give the other threads a chance to attempt to get messages from queue
     message.delete () # Let the queue know that the message is processed
