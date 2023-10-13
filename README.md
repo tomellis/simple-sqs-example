@@ -22,3 +22,5 @@
 - receive_multiple_fifo_delay.py - receive a batch of 10 messages from a fifo queue then wait 3 seconds before deleting them. Run this with another recieve_multiple_fifo.py in paralell to test behaviour of FIFO SQS.
 - receive_multiple_fifo_threads.py - using 5 threads, receive a batch of 10 messages from a fifo queue waiting 2 seconds between batch before deleting them, demonstrating behaviour between threads/workers picking up messages.
 - receive_multiple_fifo_threads_but_fail.py - as above, but don't delete the messages after to simulate a fail in processing. Messages are not able to be processed by other workers within those group ids until the default visability timeout (30 seconds) has expired.
+- send_multiple_standard_throttled.py - use the bucket throttling algorithm to throttle requests to avoid overwhelming a queue if downstream system fails
+- send_multiple_standard_limiter_module.py - same as above but using an external module called limiter
